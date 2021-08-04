@@ -1,0 +1,102 @@
+swagger: '2.0'
+schemes:
+  - https
+host: payment.polesonearth.com
+info:
+  version: '1.0.17'
+  x-logo:
+    url: 'https://raw.githubusercontent.com/Mylothros-Charalampos/test/main/logo.png'
+  title: API pricing
+  contact:
+    name: API Support
+    email: info@tageoforce.com
+    url: set url
+  description: |-
+    # Welcome
+
+    This is a real API, that lives at payment.polesonearth.com.
+
+    # Payment
+    
+    The purpose of the api is to calculate the price for image recognition of different kinds of poles, from the specific area you will provide.
+
+    Below you can see what type of data you have to send to the api and afterwards you see how the response will look like.
+
+paths:
+  /pricing:
+    post:
+      parameters:
+        - name: Front data
+          in: body
+          description: User data
+          required: true
+          schema:
+            type: object
+            required:
+              - area
+              - minlat
+              - minlong
+              - maxlat
+              - maxlong
+              - email
+              - country
+              - invoice
+              - vatId
+            properties:
+              area:
+                type: number
+                description: area
+              minlat:
+                type: number
+                description: minlat
+              minlong:
+                type: number
+                description: minlong
+              maxlat:
+                type: number
+                description: maxlat
+              maxlong:
+                type: number
+                description: maxlong
+              email:
+                type: string
+                description: email
+              country:
+                type: string
+                description: country
+              invoice:
+                type: boolean
+                description: Message text
+              vatId:
+                type: string
+                description: vatId
+      summary: Get price
+      description: Post coordinates of section and get price
+      operationId: POST_Pricing
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Response'
+      consumes: []
+      produces: []
+      x-internal: false
+definitions:
+  Response:
+    allOf:
+      - type: object
+        properties:
+          skus:
+            type: array
+            items:
+              type: object
+          geometry:
+            type: object
+          email:
+            type: string
+          country:
+            type: string
+          invoice:
+            type: boolean
+          vatId:
+            type: string
