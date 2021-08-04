@@ -5,8 +5,7 @@ host: payment.polesonearth.com
 info:
   version: '1.0.17'
   x-logo:
-    url: './logo.png'
-    altText: Petstore logo
+    url: 'https://github.com/Mylothros-Charalampos/test/blob/main/logo.png'
   title: API pricing
   contact:
     name: API Support
